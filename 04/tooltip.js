@@ -7,8 +7,22 @@ class Tooltip extends HTMLElement {
     }
 
     connectedCallback() {
-        const template = document.querySelector('#tooltip-template')
-        this.shadowRoot.appendChild(template.content.cloneNode(true))
+        const template = `
+        <style>
+            div {
+                background-color: bisque;
+                color: darkcyan;
+                position: absolute;
+                z-index: 10;
+            }
+            .highlignt {
+            background-color: red;
+        }
+        </style>
+        <span> (!) </span>
+        <slot>Some default slot text</slot>
+        `
+        this.shadowRoot.innerHTML = template
         if (this.hasAttribute('text')) {
             this._tooltipText = this.getAttribute('text')
         }
@@ -22,10 +36,6 @@ class Tooltip extends HTMLElement {
     _showTooltip() {
         this._tooltipContainer = document.createElement('div')
         this._tooltipContainer.textContent = this._tooltipText
-        this._tooltipContainer.style.backgroundColor = 'black';
-        this._tooltipContainer.style.color = 'white';
-        this._tooltipContainer.style.position = 'absolute';
-        this._tooltipContainer.style.zIndex = '10';
         this.shadowRoot.appendChild(this._tooltipContainer)
     }
 
