@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>Web Components</title>
     <style>
+        :root {
+            --color-primary: lightblue;
+            --color-secondary: red;
+        }
         div {
             border: 2px solid orange;
         }
@@ -15,12 +19,12 @@
 </head>
 <body>
 <p>
-    <bsn-tooltip>
+    <bsn-tooltip class="first-custom">
         <span class="highlignt">My custom element</span>
     </bsn-tooltip>
     is awesome!
 </p>
-<bsn-tooltip text="Custom text"></bsn-tooltip>
+<bsn-tooltip class="special" text="Custom text"></bsn-tooltip>
 
 </body>
 </html>
